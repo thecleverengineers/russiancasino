@@ -9,6 +9,7 @@ import {
   MdNotificationsActive
 } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import bgImage from 'assets/img/bg/background_1920-9.jpg';
 class MainLayout extends React.Component {
   token = JSON.parse(localStorage.getItem('auth'));
   state={
@@ -146,15 +147,23 @@ class MainLayout extends React.Component {
 
     const { children } = this.props;
     return (
-      <main className="cr-app bg-light">
-        
+      <main className="cr-app bg-light" style={{
+        background: `linear-gradient(135deg, rgba(95,44,130,0.85) 0%, rgba(73,160,157,0.85) 100%), url(${bgImage}) center/cover no-repeat`,
+        minHeight: '100vh',
+        padding: 0,
+        margin: 0,
+        borderRadius: '18px',
+        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)',
+        backdropFilter: 'blur(12px)',
+        animation: 'fadeIn 0.7s cubic-bezier(0.4,0,0.2,1) both',
+        position: 'relative',
+      }}>
         {/* <Sidebar /> */}
-        <Content fluid onClick={this.handleContentClick}>      
-           
-              
-            
-          <a href="https://t.me/thetitanclubs" className="btn btn-primary telegram"><FaTelegram /> </a>
-          {children}
+        <Content fluid onClick={this.handleContentClick}>
+          <a href="https://t.me/thetitanclubs" className="btn btn-primary telegram" style={{position:'absolute',top:18,right:24,zIndex:10,boxShadow:'0 2px 8px rgba(31,38,135,0.12)'}}> <FaTelegram /> </a>
+          <div className="fade-in" style={{paddingTop: '1.5rem', paddingBottom: '1.5rem'}}>
+            {children}
+          </div>
           <Footer />
         </Content>
         <Snackbar

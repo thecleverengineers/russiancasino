@@ -29,8 +29,16 @@ button,
   -webkit-font-smoothing: antialiased;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: $font-weight-normal;
-  background-color: transparent;
+  background: $premium-gradient;
   color:#222a33;
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
+}
+
+body {
+  min-height: 100vh;
+  background: $premium-gradient;
+  background-attachment: fixed;
 }
 
 .cr-app {
@@ -40,4 +48,8 @@ button,
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  background: $glass-bg;
+  box-shadow: $premium-shadow;
+  border-radius: $premium-radius;
+  backdrop-filter: blur($glass-blur);
 }

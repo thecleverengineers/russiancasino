@@ -38,9 +38,14 @@ import {
 import bn from 'utils/bemnames';
 
 const sidebarBackground = {
-  backgroundImage: `url("${sidebarBgImage}")`,
+  backgroundImage: `linear-gradient(135deg, rgba(31,38,135,0.65) 0%, rgba(95,44,130,0.85) 100%), url("${sidebarBgImage}")`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
+  borderRadius: '18px',
+  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)',
+  animation: 'fadeIn 0.7s cubic-bezier(0.4,0,0.2,1) both',
+  minHeight: '100vh',
+  backdropFilter: 'blur(12px)',
 };
 
 const navComponents = [
@@ -110,17 +115,18 @@ class Sidebar extends React.Component {
     return (
       <aside className={bem.b()} data-image={sidebarBgImage}>
         <div className={bem.e('background')} style={sidebarBackground} />
-        <div className={bem.e('content')}>
+        <div className={bem.e('content')} style={{paddingTop:'1.5rem'}}>
           <Navbar>
-            <SourceLink className="navbar-brand d-flex">
+            <SourceLink className="navbar-brand d-flex" style={{background:'rgba(255,255,255,0.18)',borderRadius:'12px',boxShadow:'0 2px 8px rgba(31,38,135,0.12)',padding:'0.5rem 1rem'}}>
               <img
                 src={logo200Image}
                 width="40"
                 height="30"
                 className="pr-2"
                 alt=""
+                style={{borderRadius:8, boxShadow:'0 2px 8px rgba(31,38,135,0.12)'}}
               />
-              <span className="text-white">
+              <span className="text-white" style={{fontWeight:700, fontSize:'1.2rem',marginLeft:8,letterSpacing:'0.03em'}}>
                 Reduction <FaGithub />
               </span>
             </SourceLink>

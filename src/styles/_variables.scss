@@ -12,13 +12,20 @@
 // $cyan: #00bcd4;
 // $white: #fff;
 $theme-colors: (
-  "primary": #6a82fb,
-  "secondary": #fc5c7d,
-  "success": #45b649,
-  "danger": #f85032,
-  "warning": #ffd700,
-  "info": #00c9ff
+  "primary": #5f2c82, // deep purple
+  "secondary": #49a09d, // teal gradient
+  "success": #43e97b, // vibrant green
+  "danger": #fa709a, // pink-red
+  "warning": #ffd700, // gold
+  "info": #00c9ff // cyan
 );
+
+$premium-gradient: linear-gradient(135deg, #5f2c82 0%, #49a09d 100%);
+$premium-gradient-alt: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+$glass-bg: rgba(255,255,255,0.15);
+$glass-blur: 12px;
+$premium-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+$premium-radius: 18px;
 
 $enable-gradients: true;
 
