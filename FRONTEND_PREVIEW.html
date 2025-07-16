@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period-Based Gaming Platform - Frontend Preview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><pattern id="casino" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23casino)"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .game-preview {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .demo-interface {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .betting-demo {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .bet-option {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .bet-option:hover {
+            border-color: #007bff;
+            transform: scale(1.05);
+        }
+        
+        .dragon-option {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        
+        .tiger-option {
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+        
+        .tie-option {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        
+        .stats-preview {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .leaderboard-preview {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .user-rank {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .rank-badge {
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .period-indicator {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 2px;
+        }
+        
+        .countdown-demo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #dc3545;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-3 mb-4">
+                <i class="fas fa-gamepad me-3"></i>
+                Period-Based Gaming Platform
+            </h1>
+            <p class="lead mb-4">
+                Advanced React frontend with real-time gaming, AI dealers, and comprehensive analytics
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <span class="tech-badge">React 18.2.0</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Socket.IO</span>
+                    <span class="tech-badge">Bootstrap 5</span>
+                    <span class="tech-badge">Real-time</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Features -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Dragon vs Tiger Game Preview -->
+                <div class="col-lg-8">
+                    <div class="feature-card">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-dragon text-danger me-2"></i>
+                            Dragon vs Tiger - Live Gaming Interface
+                        </h3>
+                        
+                        <!-- Demo Interface -->
+                        <div class="demo-interface">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5>Current Period: #12345</h5>
+                                <div class="countdown-demo">0:45</div>
+                                <span class="badge bg-info">123 Players</span>
+                            </div>
+                            
+                            <!-- Period Selection -->
+                            <div class="mb-3">
+                                <span class="period-indicator">30s</span>
+                                <span class="period-indicator bg-primary">1m</span>
+                                <span class="period-indicator">3m</span>
+                                <span class="period-indicator">5m</span>
+                            </div>
+                            
+                            <!-- Betting Options -->
+                            <div class="betting-demo">
+                                <div class="bet-option dragon-option">
+                                    <i class="fas fa-dragon fa-2x mb-2"></i>
+                                    <h5>DRAGON</h5>
+                                    <span class="badge bg-danger">1.95x</span>
+                                </div>
+                                <div class="bet-option tie-option">
+                                    <i class="fas fa-equals fa-2x mb-2"></i>
+                                    <h5>TIE</h5>
+                                    <span class="badge bg-success">8.0x</span>
+                                </div>
+                                <div class="bet-option tiger-option">
+                                    <i class="fas fa-cat fa-2x mb-2"></i>
+                                    <h5>TIGER</h5>
+                                    <span class="badge bg-warning">1.95x</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Bet Amount -->
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" value="100" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Game Features -->
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-chart-line me-2"></i>Real-time Features</h6>
+                                <ul class="feature-list">
+                                    <li>Live countdown timers</li>
+                                    <li>Real-time player counts</li>
+                                    <li>Instant bet placement</li>
+                                    <li>Auto balance updates</li>
+                                    <li>WebSocket communication</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-cogs me-2"></i>Game Mechanics</h6>
+                                <ul class="feature-list">
+                                    <li>Provably fair results</li>
+                                    <li>Multiple period durations</li>
+                                    <li>Trend analysis</li>
+                                    <li>Hot/cold streaks</li>
+                                    <li>Comprehensive statistics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Features -->
+                <div class="col-lg-4">
+                    <!-- Statistics Preview -->
+                    <div class="stats-preview mb-4">
+                        <h5><i class="fas fa-chart-bar me-2"></i>Live Statistics</h5>
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><i class="fas fa-dragon text-danger me-1"></i>Dragon</span>
+                                <span>45.0%</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-danger" style="width: 45%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><i class="fas fa-cat text-warning me-1"></i>Tiger</span>
+                                <span>38.0%</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-warning" style="width: 38%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><i class="fas fa-equals text-success me-1"></i>Tie</span>
+                                <span>17.0%</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 17%"></div>
+                            </div>
+                            
+                            <div class="alert alert-warning mb-0">
+                                <strong>Current Streak:</strong><br>
+                                <i class="fas fa-dragon text-danger"></i> DRAGON × 3
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Performance -->
+                    <div class="game-preview">
+                        <h6><i class="fas fa-user-check me-2"></i>Your Performance</h6>
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Games Played:</span>
+                                <strong>247</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Win Rate:</span>
+                                <strong class="text-success">54.3%</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Total Winnings:</span>
+                                <strong class="text-success">$8,765.50</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Profit/Loss:</span>
+                                <strong class="text-success">+$1,234.75</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Games Overview -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Complete Gaming Suite</h2>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="game-preview text-center">
+                        <i class="fas fa-gem fa-3x text-success mb-3"></i>
+                        <h5>Lucky 7</h5>
+                        <p class="text-muted">Two cards sum betting - Under 7, Lucky 7, or Over 7</p>
+                        <div class="period-indicator">30s</div>
+                        <div class="period-indicator">1m</div>
+                        <div class="period-indicator">3m</div>
+                        <div class="period-indicator">5m</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="game-preview text-center">
+                        <i class="fas fa-dice fa-3x text-warning mb-3"></i>
+                        <h5>Roulette</h5>
+                        <p class="text-muted">European roulette with comprehensive betting options</p>
+                        <div class="period-indicator">30s</div>
+                        <div class="period-indicator">1m</div>
+                        <div class="period-indicator">3m</div>
+                        <div class="period-indicator">5m</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="game-preview text-center">
+                        <i class="fas fa-spade fa-3x text-dark mb-3"></i>
+                        <h5>Blackjack</h5>
+                        <p class="text-muted">Classic 21 with Royal Match and 21+3 side bets</p>
+                        <div class="period-indicator">1m</div>
+                        <div class="period-indicator">3m</div>
+                        <div class="period-indicator">5m</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="game-preview text-center">
+                        <i class="fas fa-crown fa-3x text-primary mb-3"></i>
+                        <h5>Live Blackjack</h5>
+                        <p class="text-muted">AI dealers with unique personalities and interactions</p>
+                        <div class="period-indicator">1m</div>
+                        <div class="period-indicator">3m</div>
+                        <div class="period-indicator">5m</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="game-preview text-center">
+                        <i class="fas fa-heart fa-3x text-info mb-3"></i>
+                        <h5>Three Card Poker</h5>
+                        <p class="text-muted">Fast-paced poker variant with ante and pair plus bets</p>
+                        <div class="period-indicator">1m</div>
+                        <div class="period-indicator">3m</div>
+                        <div class="period-indicator">5m</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="game-preview text-center">
+                        <i class="fas fa-fire fa-3x text-danger mb-3"></i>
+                        <h5>Texas Hold'em</h5>
+                        <p class="text-muted">Community card poker with ante and bonus bets</p>
+                        <div class="period-indicator">3m</div>
+                        <div class="period-indicator">5m</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Preview -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="feature-card">
+                        <h3 class="mb-4">
+                            <i class="fas fa-trophy text-warning me-2"></i>
+                            Live Leaderboard System
+                        </h3>
+                        
+                        <div class="leaderboard-preview">
+                            <div class="user-rank">
+                                <div class="rank-badge" style="background: #ffd700;">1</div>
+                                <div class="flex-grow-1">
+                                    <strong>DragonKing</strong> 🐉
+                                    <div class="text-muted small">89 games won</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="text-success fw-bold">$15,674.50</div>
+                                    <div class="text-muted small">Biggest win: $2,500</div>
+                                </div>
+                            </div>
+                            
+                            <div class="user-rank">
+                                <div class="rank-badge" style="background: #c0c0c0;">2</div>
+                                <div class="flex-grow-1">
+                                    <strong>LuckyPlayer</strong> 🍀
+                                    <div class="text-muted small">67 games won</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="text-success fw-bold">$12,456.75</div>
+                                    <div class="text-muted small">Biggest win: $1,800</div>
+                                </div>
+                            </div>
+                            
+                            <div class="user-rank">
+                                <div class="rank-badge" style="background: #cd7f32;">3</div>
+                                <div class="flex-grow-1">
+                                    <strong>TigerMaster</strong> 🐅
+                                    <div class="text-muted small">78 games won</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="text-success fw-bold">$9,834.25</div>
+                                    <div class="text-muted small">Biggest win: $1,650</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-medal me-2"></i>Ranking Features</h6>
+                                <ul class="feature-list">
+                                    <li>Daily/Weekly/Monthly boards</li>
+                                    <li>Real-time position updates</li>
+                                    <li>Achievement badges</li>
+                                    <li>Win streak tracking</li>
+                                    <li>Player profiles</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-chart-pie me-2"></i>Analytics Dashboard</h6>
+                                <ul class="feature-list">
+                                    <li>Comprehensive game statistics</li>
+                                    <li>Player behavior analytics</li>
+                                    <li>Revenue tracking</li>
+                                    <li>Performance metrics</li>
+                                    <li>Trend analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <h5><i class="fas fa-mobile-alt me-2"></i>Mobile Responsive</h5>
+                        <p>Fully optimized for mobile devices with touch-friendly interfaces.</p>
+                        
+                        <h5 class="mt-4"><i class="fas fa-shield-alt me-2"></i>Secure & Fair</h5>
+                        <p>Provably fair gaming with cryptographic verification.</p>
+                        
+                        <h5 class="mt-4"><i class="fas fa-bolt me-2"></i>Real-time</h5>
+                        <p>WebSocket connections for instant updates and live gaming.</p>
+                        
+                        <h5 class="mt-4"><i class="fas fa-robot me-2"></i>AI Dealers</h5>
+                        <p>Interactive AI dealers with unique personalities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Features -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center mb-5">Technical Implementation</h2>
+            
+            <div class="row">
+                <div class="col-md-3 text-center mb-4">
+                    <i class="fab fa-react fa-3x text-info mb-3"></i>
+                    <h5>React 18.2.0</h5>
+                    <p>Latest React with concurrent features and improved performance</p>
+                </div>
+                
+                <div class="col-md-3 text-center mb-4">
+                    <i class="fas fa-code fa-3x text-warning mb-3"></i>
+                    <h5>TypeScript</h5>
+                    <p>Full type safety with comprehensive interfaces and error handling</p>
+                </div>
+                
+                <div class="col-md-3 text-center mb-4">
+                    <i class="fas fa-sync-alt fa-3x text-success mb-3"></i>
+                    <h5>Real-time Updates</h5>
+                    <p>Socket.IO integration for live gaming and instant notifications</p>
+                </div>
+                
+                <div class="col-md-3 text-center mb-4">
+                    <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                    <h5>PWA Ready</h5>
+                    <p>Progressive Web App capabilities with offline support</p>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <h4><i class="fas fa-server me-2"></i>Backend Integration</h4>
+                    <ul class="feature-list text-light">
+                        <li>RESTful API communication</li>
+                        <li>JWT authentication</li>
+                        <li>WebSocket real-time events</li>
+                        <li>Error handling & recovery</li>
+                        <li>Loading states & optimistic updates</li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-6">
+                    <h4><i class="fas fa-paint-brush me-2"></i>UI/UX Features</h4>
+                    <ul class="feature-list text-light">
+                        <li>Material Design principles</li>
+                        <li>Smooth animations & transitions</li>
+                        <li>Responsive grid layouts</li>
+                        <li>Accessibility compliance</li>
+                        <li>Dark/Light theme support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white text-center">
+        <div class="container">
+            <h2 class="mb-4">Ready to Experience the Future of Online Gaming?</h2>
+            <p class="lead mb-4">
+                Our period-based gaming platform combines cutting-edge technology with engaging gameplay
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <a href="/demo" class="btn btn-light btn-lg me-3">
+                        <i class="fas fa-play me-2"></i>
+                        View Live Demo
+                    </a>
+                    <button class="btn btn-outline-light btn-lg" onclick="showTechDetails()">
+                        <i class="fas fa-code me-2"></i>
+                        Technical Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">
+                <i class="fas fa-gamepad me-2"></i>
+                Period-Based Gaming Platform - Advanced React Frontend with Full Backend Integration
+            </p>
+            <p class="text-muted mt-2">
+                Built with React 18.2.0, TypeScript, Socket.IO, Node.js, MongoDB, and Redis
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Demo countdown animation
+        let countdown = 45;
+        const countdownElement = document.querySelector('.countdown-demo');
+        
+        setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                countdown = 60;
+            }
+            
+            const minutes = Math.floor(countdown / 60);
+            const seconds = countdown % 60;
+            countdownElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Change color when time is running out
+            if (countdown <= 10) {
+                countdownElement.style.color = '#dc3545';
+            } else {
+                countdownElement.style.color = '#28a745';
+            }
+        }, 1000);
+
+        // Interactive betting demo
+        document.querySelectorAll('.bet-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const betType = option.querySelector('h5').textContent;
+                alert(`Demo: You would place a $100 bet on ${betType}!\n\nIn the real application:\n• Your balance would be updated instantly\n• The bet would be recorded in the current period\n• You'd see real-time updates from other players\n• Results would be processed automatically`);
+            });
+        });
+
+        function showTechDetails() {
+            alert(`Technical Implementation Details:
+
+Frontend Technologies:
+• React 18.2.0 with hooks and concurrent features
+• TypeScript for type safety
+• Bootstrap 5 for responsive UI
+• Socket.IO client for real-time communication
+• Axios for API requests
+• React Router for navigation
+
+Backend Technologies:
+• Node.js with Express.js
+• TypeScript for backend type safety
+• MongoDB for data storage
+• Redis for caching and sessions
+• Socket.IO for real-time events
+• JWT for authentication
+
+Gaming Features:
+• Period-based betting (30s, 1m, 3m, 5m)
+• Real-time player counts and betting totals
+• Provably fair algorithms
+• AI dealers with personalities
+• Comprehensive statistics and analytics
+• Live leaderboards
+• Wallet integration
+
+Advanced Features:
+• WebSocket real-time communication
+• Responsive mobile design
+• Progressive Web App capabilities
+• Multi-language support
+• Advanced security measures
+• Comprehensive admin panel`);
+        }
+    </script>
+</body>
+</html>
