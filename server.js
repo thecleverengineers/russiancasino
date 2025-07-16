@@ -12,6 +12,8 @@ var winston = require('./winston');
 // const Datastore = require("nedb");
 // const jwt = require("jsonwebtoken");
 const app = express();
+const user = require("./routes/user");
+
 // const db = {};
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -29,9 +31,11 @@ app.use(bodyParser.json());
 const db = require("./dbConfig").mongoURI[app.settings.env];
 
 // Connect to MongoDB
+const port = process.env.PORT || 7777;
+
 mongoose
-  ni, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(()  console.log("MongoDB Connected: ", app.settings.env))
+  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => console.log("MongoDB Connected: ", app.settings.env))
   .catch((err) => console.log(err));
   // console.log(app.settings);
 
@@ -45,8 +49,7 @@ app.use(express.static(path.resolve(__dirname, "build")));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Use Routes
 
-app.get("/json/:file",function(req,res){xx
-
+app.get("/json/:file",function(req,res){
   var fileName = req.params.file;
   var file = path.normalize(__dirname + '/build/static/' + fileName+".json");
   // console.log('path: ' + file);
