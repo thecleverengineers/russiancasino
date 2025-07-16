@@ -15,7 +15,7 @@ import dotenv from 'dotenv';
 
 // Import routes
 import userRoutes from './routes/user.js';
-import gameRoutes from './routes/game.js';
+import gameRoutes from './routes/games.js';
 import paymentRoutes from './routes/payment.js';
 import adminRoutes from './routes/admin.js';
 import analyticsRoutes from './routes/analytics.js';
@@ -27,7 +27,7 @@ import { socketAuth } from './middleware/socketAuth.js';
 
 // Import services
 import { NotificationService } from './services/NotificationService.js';
-import { GameEngine } from './services/GameEngine.js';
+import { AdvancedGameEngine } from './services/AdvancedGameEngine.js';
 import { PaymentProcessor } from './services/PaymentProcessor.js';
 import { AnalyticsService } from './services/AnalyticsService.js';
 
@@ -48,7 +48,7 @@ class AdvancedGamingServer {
   private redis: any;
   private logger: winston.Logger;
   private notificationService: NotificationService;
-  private gameEngine: GameEngine;
+  private gameEngine: AdvancedGameEngine;
   private paymentProcessor: PaymentProcessor;
   private analyticsService: AnalyticsService;
 
@@ -103,7 +103,7 @@ class AdvancedGamingServer {
 
   private initializeServices(): void {
     this.notificationService = new NotificationService();
-    this.gameEngine = new GameEngine();
+    this.gameEngine = new AdvancedGameEngine();
     this.paymentProcessor = new PaymentProcessor();
     this.analyticsService = new AnalyticsService();
   }
